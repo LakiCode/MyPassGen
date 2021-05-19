@@ -1,7 +1,7 @@
 
 # Password Generator Starter Code
 
-## Purpuse of challange
+## Purpose of challange
 * Build a password genrator as my assigment for 3th week 
 
 ## Build with:
