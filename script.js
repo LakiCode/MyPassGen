@@ -29,7 +29,7 @@ var promtLowChar = window.prompt ("Do you want to include lowercase characters i
 var promtUpperChar = window.prompt ("Do you want to include uppercase characters in the password?Enter 'Yes' or 'No' to choose");
   if (promtUpperChar === 'yes' || promtUpperChar === 'Yes') {
     // add lowercase characers to var allChar
-    allChar = allChar + "," + upperChar;
+    allChar = allChar + "," + upperChar
   }
   else {
     allChar = allChar;
