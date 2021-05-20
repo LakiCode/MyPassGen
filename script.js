@@ -4,11 +4,11 @@ var lowChar = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","
 var upperChar = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 var numChar = [0,1,2,3,4,5,6,7,8,9];
 var specChar = ["@", "!", "$", "#", "&", "-", "ô"]
-console.log (lowChar);
+
 // var allChar = lowChar + "," + upperChar + "," + numChar + "," + specChar;
-// crate var to hold all selected array's
-var allChar = "";
-alert (allChar);
+// create var to hold all selected array's
+// var allChar = "";
+
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
@@ -20,7 +20,7 @@ function writePassword() {
 var promtLowChar = window.prompt ("Do you want to include lowercase characters in the password? Enter 'Yes' or 'No' to choose");
   if (promtLowChar === 'yes' || promtLowChar === 'Yes') {
     // add lowercase characers to var allChar
-    allChar = lowChar;
+    var allChar = lowChar;
   }
   else {
     allChar = "";
@@ -53,9 +53,13 @@ else {
   allChar = allChar;
 };
 // log user selections
-console.log (promtLowChar, promtUpperChar, promtNumChar, promtSpecChar);
- // var password = generatePassword();
- var password = allChar;
+console.log (allChar.length);
+for (var i = 0 ; i < allChar.length; i++) {
+  console.log (allChar[i]);
+}
+
+ var password = generatePassword();
+ //var password = allChar;
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
