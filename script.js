@@ -1,131 +1,100 @@
 // Assignment code here
 // create array's for characters
-var lowChar = [
-  "a",
-  "b",
-  "c",
-  "d",
-  "e",
-  "f",
-  "g",
-  "h",
-  "i",
-  "j",
-  "k",
-  "l",
-  "m",
-  "n",
-  "o",
-  "p",
-  "q",
-  "r",
-  "s",
-  "t",
-  "u",
-  "v",
-  "w",
-  "x",
-  "y",
-  "z",
-];
-var upperChar = [
-  "A",
-  "B",
-  "C",
-  "D",
-  "E",
-  "F",
-  "G",
-  "H",
-  "I",
-  "J",
-  "K",
-  "L",
-  "M",
-  "N",
-  "O",
-  "P",
-  "Q",
-  "R",
-  "S",
-  "T",
-  "U",
-  "V",
-  "W",
-  "X",
-  "Y",
-  "Z",
-];
-var numChar = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-var specChar = ["@", "!", "$", "#", "&", "-", "ô"];
-
-// var allChar = lowChar + "," + upperChar + "," + numChar + "," + specChar;
-// create var to hold all selected array's
-// var allChar = "";
-
+var lowChar = "abcdefghijklmnopqrstuvwxyz";
+var upperChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var numChar = "0123456789";
+var specChar = "@!$#&-ô{}[]%^&*-+";
+var allChar = "";
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  //
   // Promt user for password criteria
-  // yes or no for lowercase
-  var promtLowChar = confirm (
-    "Do you want to include lowercase characters in the password?");
-  if (promtLowChar) {
-    // add lowercase characers to var allChar
-    var allChar = lowChar; // or var allChar = [].concat(lowChar);
-  } else {
-    // alert message that lower case characters are mandatory and need to be selected
-    alert ("lower case characters are mandatory ");
-    writePassword();
+  var promptLowChar = confirm(
+    "Do you want to include lowercase characters in the password?"
+  );
 
-    //allChar = "";
+  var promptUpperChar = confirm(
+    "Do you want to include uppercase characters in the password?"
+  );
+
+  var promptNumChar = confirm(
+    "Do you want to include numeric characters  in the password?"
+  );
+  console.log("did hi select char: " + promptNumChar);
+  var promptSpecChar = confirm(
+    "Do you want to include special characters  in the password?"
+  );
+
+  if (
+    promptLowChar === false &&
+    promptUpperChar === false &&
+    promptNumChar === false &&
+    promptSpecChar === false
+  ) {
+    // uh users need to select somethin
+
+    alert("Need to select minimum one group of characters type!");
+
+    // return;
+    writePassword();
+  }
+  if (promptLowChar) {
+    // add lowercase characers to var allChar
+    allChar += lowChar;
   }
   // yes or no for uppercase character
-  var promtUpperChar = confirm(
-    "Do you want to include UPPERcase characters in the password?");
-
-  if (promtUpperChar) {
+  if (promptUpperChar) {
     // add lowercase characers to var allChar
-    //allChar = allChar + "," + upperChar;
-    allChar = [].concat(lowChar, upperChar);
-  } else {
-    alert ("lower case characters are mandatory ");
-    writePassword();
+    allChar += upperChar;
   }
   // yes or no for numeric character
-  var promtNumChar = confirm(
-    "Do you want to include numeric characters  in the password?");
-  if (promtNumChar) {
+
+  if (promptNumChar) {
     // add lowercase characers to var allChar
-    allChar = [].concat(lowChar, upperChar, numChar);
-  } else {
-    alert ("numbers characters are mandatory! ");
-    writePassword();
-  }
-  //yes or no for special caracter
-  var promtSpecChar = confirm(
-    "Do you want to include special characters  in the password?");
-  if (promtSpecChar) {
-    // add lowercase characers to var allChar
-    allChar = [].concat(lowChar, upperChar, numChar, specChar);
-  } else {
-    allChar = [].concat(lowChar, upperChar, numChar);
-  }
-  // log user selections
-  console.log(allChar.length);
-  for (var i = 0; i < allChar.length; i++) {
-    console.log(allChar[i]);
+    allChar += numChar;
   }
 
-  // generatePassword();
-  var password = allChar;
+  //yes or no for special caracter
+
+  if (promptSpecChar) {
+    // add lowercase characers to var allChar
+    allChar += specChar;
+  }
+}
+
+function generatePassword() {
+  // Create var for password lenght min 8 max 128
+  var passLenght = prompt(
+    "Enter number of characters in your password \n (minimum 8 and maximum 128 characters)"
+  );
+  console.log(passLenght);
+  // Check password lenght criteria
+  while (passLenght === null || passLenght < 8 || passLenght > 128) {
+    alert(
+      "Password lenght cannot be empty, less then 8 characters or more than 128! Try again!"
+    );
+    passLenght = prompt(
+      "Enter number of characters in your password \n (minimum 8 and maximum 128 characters)"
+    );
+  }
+  writePassword();
+
+  // new user enter desier password length, time to generate some magic :-)
+  var passString = "";
+  var allCharStrng = allChar.toString();
+  // console.log ("array je bio" + allChar + "a sada je string: " + allCharStrng);
+  for (var i = 0; i < passLenght; i++) {
+    passString += allCharStrng.charAt(
+      Math.floor(Math.random() * allChar.length)
+    );
+  }
+
   var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
+  passwordText.value = passString;
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", generatePassword);

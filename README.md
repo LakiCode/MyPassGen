@@ -5,6 +5,8 @@
 * Build a password genrator as my assigment for 3th week 
 
 ## Build with:
+ - CSS
+ - HTML
  - JavaScript
 
 ## Description
