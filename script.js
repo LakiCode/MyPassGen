@@ -71,7 +71,7 @@ function generatePassword() {
   );
   console.log(passLenght);
   // Check password lenght criteria
-  while (passLenght === null || passLenght < 8 || passLenght > 128) {
+  while (passLenght === null || passLenght < 8 || passLenght > 128 || passLenght === NaN) {
     alert(
       "Password lenght cannot be empty, less then 8 characters or more than 128! Try again!"
     );
