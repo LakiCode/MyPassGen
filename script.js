@@ -67,14 +67,15 @@ function writePassword() {
 function generatePassword() {
   // Create var for password lenght min 8 max 128
   var passLenght = prompt(
-    "Enter number of characters in your password \n (minimum 8 and maximum 128 characters)"
+    "Enter number of characters in your password \n (password can hold between 8 and 128 characters only)"
   );
   console.log(passLenght);
   // Check password lenght criteria
-  while (passLenght === null || passLenght < 8 || passLenght > 128 || passLenght === NaN) {
+  while (isNaN(passLenght) || passLenght < 8 || passLenght > 128) {
     alert(
-      "Password lenght cannot be empty, less then 8 characters or more than 128! Try again!"
-    );
+      "Password lenght cannot be empty.\n Need to be number, and between 8 and 128 characters! \n Try again!");
+      console.log (passLenght);
+    
     passLenght = prompt(
       "Enter number of characters in your password \n (minimum 8 and maximum 128 characters)"
     );
