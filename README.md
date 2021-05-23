@@ -21,9 +21,12 @@ Password generator must fullfill next crateria:
  - depend of user answers generate password or create alert.
 
  ## Project screen shots:
+ !["alt text"](asset/images/pass_gen.jpg "Password generator")
+ !["alt-text"](asset/images/pass_alert.jpg "Password message")
+ !["alt-text"](asset/images/pass_success.jpg "Password is generated")
 
  ## Password generator URL:
- https://lakicode.github.io/myPassGen/
+ https://lakicode.github.io/MyPassGen/
 
  ## Code developed by:
  Robert Fuke
